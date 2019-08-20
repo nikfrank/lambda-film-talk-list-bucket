@@ -24,6 +24,7 @@ exports.handler = (event, context)=>
   }, (err, contents)=>{
     err ? context.fail(err) : context.succeed({
       statusCode: 200,
-      body: contents
+      body: JSON.stringify(contents),
+      headers: { 'Content-Type': 'application/json' },
     })
   });
