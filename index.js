@@ -22,5 +22,8 @@ exports.handler = (event, context)=>
   s3.listObjectsV2({
     Bucket: 'lambda-film-talk-output'
   }, (err, contents)=>{
-    err ? context.fail(err) : context.succeed(contents)
+    err ? context.fail(err) : context.succeed({
+      statusCode: 200,
+      body: contents
+    })
   });
